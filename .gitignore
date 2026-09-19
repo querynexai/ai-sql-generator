@@ -1,0 +1,126 @@
+
+# -----------------------------------------
+# .NET / C# (Backend)
+# -----------------------------------------
+
+# Build results
+**/bin/
+**/obj/
+**/out/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/x64/
+**/x86/
+**/[Aa]rm/
+**/[Aa]rm64/
+**/build/
+**/bld/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Oo]ut/
+**/[Ll]og/
+**/[Ll]ogs/
+
+# Visual Studio
+**/.vs/
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+!**/.vscode/mcp.json
+**/*.user
+**/*.rsuser
+**/*.suo
+**/*.sln.docstates
+**/*.userosscache
+**/*.sln.docstates
+**/*.userprefs
+
+# MSBuild
+**/*.binlog
+**/*.tlog
+**/*.log
+**/msbuild.log
+**/msbuild.err
+**/msbuild.wrn
+**/project.lock.json
+**/project.fragment.lock.json
+**/artifacts/
+
+# NuGet
+**/*.nupkg
+**/*.snupkg
+**/*.nuspec
+**/.nuget/
+**/packages/
+!**/packages/build/
+!**/packages/repositories.config
+
+# Entity Framework
+**/*.dbmdl
+**/*.jfm
+**/secrets.xml
+
+# Test results
+**/[Tt]est[Rr]esult*/
+**/[Bb]uild[Ll]og.*
+**/*.VisualState.xml
+**/TestResult.xml
+**/nunit-*.xml
+**/.builds/
+**/BenchmarkDotNet.Artifacts/
+
+# -----------------------------------------
+# Environment & Secrets
+# -----------------------------------------
+.env
+.env.*
+!.env.example
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/secrets.json
+**/*.pem
+**/*.key
+**/*.pfx
+
+# -----------------------------------------
+# IDE & Editors
+# -----------------------------------------
+.idea/
+**/.idea/
+**/.project
+**/.classpath
+**/.c9/
+**/*.launch
+**/.settings/
+**/*.sublime-workspace
+**/*.swp
+**/*.swo
+**/*~
+**/.history/
+
+# -----------------------------------------
+# Database backups / dumps
+# -----------------------------------------
+**/*.sql.gz
+**/*.dump
+**/*.backup
+**/*.bak
+
+# -----------------------------------------
+# OS files
+# -----------------------------------------
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/Thumbs.db
+desktop.ini
+**/desktop.ini
+
+# -----------------------------------------
+# Logs
+# -----------------------------------------
+*.log
+**/*.log
+!**/test-results.log

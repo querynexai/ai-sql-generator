@@ -1,0 +1,107 @@
+<div class="app-container">
+  <header class="app-header">
+    <div class="logo">
+      <span class="logo-icon">&lt;/&gt;</span>
+      <span>AI <span class="accent">SQL</span> Generator</span>
+    </div>
+    <p class="subtitle">Ask questions in plain English. Get PostgreSQL queries instantly.</p>
+  </header>
+
+  <div class="main-grid">
+    <!-- Left Panel: Input -->
+    <div class="panel input-panel">
+      <h2>1. Ask a question</h2>
+
+      <textarea
+        [(ngModel)]="naturalQuery"
+        placeholder="e.g. Show me the top 5 most expensive products"
+        rows="4"
+        [disabled]="loadingGenerate()"
+      ></textarea>
+
+      <div class="button-row">
+        <button
+          class="btn btn-primary"
+          (click)="generateSql()"
+          [disabled]="loadingGenerate() || !naturalQuery.trim()"
+        >
+          @if (loadingGenerate()) {
+            <span class="spinner"></span> Generating...
+          } @else {
+            ⚡ Generate SQL
+          }
+        </button>
+        <button class="btn btn-ghost" (click)="clearAll()">Clear</button>
+      </div>
+
+      <div class="examples">
+        <p class="examples-title">Try an example:</p>
+        <div class="example-chips">
+          @for (ex of examples; track ex) {
+            <button class="chip" (click)="useExample(ex)">{{ ex }}</button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel: SQL + Results -->
+    <div class="panel output-panel">
+      <h2>2. Generated SQL</h2>
+
+      @if (generatedSql()) {
+        <pre class="sql-block"><code>{{ generatedSql() }}</code></pre>
+        <div class="button-row">
+          <button
+            class="btn btn-primary"
+            (click)="executeSql()"
+            [disabled]="loadingExecute()"
+          >
+            @if (loadingExecute()) {
+              <span class="spinner"></span> Running...
+            } @else {
+              ▶ Run Query
+            }
+          </button>
+        </div>
+      } @else if (!loadingGenerate()) {
+        <p class="placeholder">Your generated SQL will appear here.</p>
+      }
+
+      @if (errorMessage()) {
+        <div class="error-box">{{ errorMessage() }}</div>
+      }
+
+      <h2>
+        3. Results
+        @if (rowCount() > 0) {
+          <span class="row-count">{{ rowCount() }} rows</span>
+        }
+      </h2>
+
+      @if (results().length > 0) {
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                @for (col of columns(); track col) {
+                  <th>{{ col }}</th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of results(); track $index) {
+                <tr>
+                  @for (col of columns(); track col) {
+                    <td>{{ getCellValue(row, col) }}</td>
+                  }
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else if (!loadingExecute()) {
+        <p class="placeholder">Query results will appear here.</p>
+      }
+    </div>
+  </div>
+</div>
